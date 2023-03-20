@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <br>
+    <h2>On this day {{ now|date:"F d" }}, events happened in history</h2>
+    <br>
+   <h5>Historical data provided by <a href="https://zenquotes.io/" target="_blank">ZenQuotes API</a>
+</h5>
+    <br>
+    {% for article in data %}
+        <div class="row">
+  <div class="col-lg-7">
+        <div class="alert alert-dark" role="alert">
+            <p>{{ article.html|safe }}</p>
+        </div>
+        </div>
+        </div>
+    {% endfor %}
+    <p> Historical data provided by <a href="https://zenquotes.io/" target="_blank">ZenQuotes API</a>
+</p>
+    <br><br>
+
+{% endblock %}

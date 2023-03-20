@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <h2>Zen Quotes</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+
+            {% for text in data %}
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+          <p class="card-text">{{ text.q }}</p>
+        <h5 class="card-title">{{text.a }}</h5>
+      </div>
+    </div>
+  </div>
+        {% endfor %}
+</div>
+    <br>
+    <form action="" method="get">
+        {% csrf_token %}
+        <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Can't find quote you like? Search Here </label>
+            <label>
+                <input type="text" class="form-control" placeholder="(e.g. Love)">
+            </label>
+            <button class="btn btn-dark" type="submit">Submit</button>
+        </div>
+
+    </form>
+    {% if quote_asked %}
+        {% for quote in quote_asked %}
+            <p>{{ quote.q }}</p>
+        {% endfor %}
+    {% endif %}
+    <hr>
+    <p>Historical data provided by <a href="https://zenquotes.io/" target="_blank">ZenQuotes API</a></p>
+    <br><br>
+{% endblock %}
